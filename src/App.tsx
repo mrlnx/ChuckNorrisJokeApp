@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 
 import JokesList from './components/JokesList/JokesList';
+import FavoritesList from './components/FavoritesList/FavoritesList';
 
 interface IJokes {
     id: number;
@@ -38,7 +39,7 @@ const App: React.RC = () => {
 
     const handleFavoriteJoke = (joke) => {
         console.log("handleFavoriteJoke");
-        setFavoriteJokes([...favoriteJokes, joke]);
+        if (favoriteJokes.length <= 9) setFavoriteJokes([...favoriteJokes, joke]);
     };
 
     /**
@@ -71,7 +72,12 @@ const App: React.RC = () => {
                 <h1>Chuck Norris Jokes App</h1>
                 <button onClick={() => handleFetchJokes()}>Fetch Jokes</button>
             </>
-            <JokesList jokes={jokes} handleFavorite={handleFavoriteJoke} />
+            <JokesList
+                jokes={jokes}
+                favoriteJokes={favoriteJokes}
+                handleFavorite={handleFavoriteJoke}
+            />
+            <FavoritesList favorites={favoriteJokes} />
         </>
     );
 };

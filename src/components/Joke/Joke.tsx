@@ -14,7 +14,11 @@ const Joke: React.FC<IJokeProps> = ({item, handleFavorite}) => {
     return (
         <li>
             {item.joke}
-            <button onClick={() => handleFavorite(item)}>Favourite</button>
+            {item.showFavoriteButton === true ? (
+                <button onClick={() => handleFavorite(item)}>Favourite</button>
+            ) : (
+                ""
+            )}
         </li>
     );
 };
