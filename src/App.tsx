@@ -1,32 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from "react";
 
-import JokesList from './components/JokesList/JokesList';
-import FavoritesList from './components/FavoritesList/FavoritesList';
+import JokesList from "./components/JokesList/JokesList";
+import FavoritesList from "./components/FavoritesList/FavoritesList";
 
-import {favoritesStore} from './utils/constants'
-import {storeItem, getStoredItem} from './utils/store'
+import {favoritesStore} from "./utils/constants";
+import {storeItem, getStoredItem} from "./utils/store";
 
-interface IJokes {
-    id: number;
-    joke: string;
-}
-
-interface IFavorites {
-    id: number;
-    joke: string;
-}
+import {IJoke} from "./shared/types";
 
 const App: React.RC = () => {
     const initialFavoriteJokes = JSON.parse(getStoredItem(favoritesStore)) || [];
 
     const [fetchJokes, setFetchJokes] = useState<{jokesFetched: boolean}>(false);
-    const [jokes, setJokes] = useState<IJokes>([]);
-    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>(initialFavoriteJokes);
+    const [jokes, setJokes] = useState<IJoke>([]);
+    const [favoriteJokes, setFavoriteJokes] = useState<IJoke>(initialFavoriteJokes);
     const [fetchFavoriteJoke, setFetchFavoriteJoke] = useState<{favoriteJokeFetched: boolean}>(
         false
     );
     const [timer, setTimer] = useState<{timerId: number}>(null);
-
 
     /**
      * Handles the event of fetching the jokes list
@@ -36,7 +27,7 @@ const App: React.RC = () => {
 
     /**
      * Handles adding event of the favorite joke
-     * @param joke 
+     * @param joke
      */
 
     const handleAddFavoriteJoke = (joke) => {
@@ -58,7 +49,7 @@ const App: React.RC = () => {
      */
 
     const handleFavoriteJokeTimer = () => {
-        if(timer !== null) {
+        if (timer !== null) {
             clearInterval(timer);
             setTimer(null);
         } else {

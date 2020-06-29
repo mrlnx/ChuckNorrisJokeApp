@@ -1,14 +1,6 @@
 import React from "react";
 
-interface IJokes {
-    id: number;
-    joke: string;
-}
-
-interface IJokeProps {
-    item: IJokes;
-    handleAddJoke: () => void;
-}
+import {IJokeProps} from "./types";
 
 const Joke: React.FC<IJokeProps> = ({item, handleAddJoke}) => {
     return (

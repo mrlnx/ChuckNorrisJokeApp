@@ -1,21 +1,7 @@
 import React from "react";
 import Joke from "./../Joke/Joke";
 
-interface IJokes {
-    id: number;
-    joke: string;
-}
-
-interface IFavorites {
-    id: number;
-    joke: string;
-}
-
-interface IJokesListProps {
-    jokes: Array<IJokes>;
-    favoriteJokes: Array<IFavorites>;
-    handleAddJoke: () => void;
-}
+import {IJokesListProps} from "./types";
 
 const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleAddJoke}) => {
     return (

@@ -1,14 +1,6 @@
 import React from "react";
 
-interface IFavorites {
-    id: number;
-    joke: string;
-}
-
-interface IFavoriteProps {
-    item: IFavorites;
-    handleRemoveJoke: () => void;
-}
+import {IFavoriteProps} from "./types";
 
 const Favorite: React.FC<IFavoriteProps> = ({item, handleRemoveJoke}) => {
     return (
