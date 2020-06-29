@@ -31,11 +31,20 @@ const App: React.RC = () => {
     const handleFetchJokes = () => setFetchJokes(true);
 
     /**
+     * Initial stored jokes
+     * On refresh the favorites lists should be stored so next time when i visit the app my favorites should be
+present.
+     */
+
+    const initialFavoriteJokes =
+        JSON.parse(window.localStorage.getItem("chuck-norris-app:favorite-jokes")) || [];
+
+    /**
      * Add Favorite Joke
      * In this list we can mark certain jokes as favorite.
      */
 
-    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>([]);
+    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>(initialFavoriteJokes);
 
     const handleAddFavoriteJoke = (joke) => {
         if (favoriteJokes.length <= 9) setFavoriteJokes([...favoriteJokes, joke]);
@@ -70,8 +79,8 @@ const App: React.RC = () => {
      */
 
     useEffect(() => {
-        //console.log("favoriteJokes effect");
-        //console.log(favoriteJokes);
+        // storing is a side effect => storage.setItem(keyName, keyValue);
+        window.localStorage.setItem("chuck-norris-app:favorite-jokes", JSON.stringify(favoriteJokes));
     }, [favoriteJokes]);
 
     return (
