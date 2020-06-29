@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 
+import Header from "./components/Header/Header";
 import JokesList from "./components/JokesList/JokesList";
 import FavoritesList from "./components/FavoritesList/FavoritesList";
 
@@ -85,14 +86,11 @@ const App: React.RC = () => {
 
     return (
         <>
-            <>
-                <h1>Chuck Norris Jokes App</h1>
-                <button onClick={() => handleFetchJokes()}>Fetch Jokes</button>
-                <label>
-                    Switch timer
-                    <input type="checkbox" onClick={() => handleFavoriteJokeTimer()} />
-                </label>
-            </>
+            <Header
+                handleFetchJokes={handleFetchJokes}
+                handleFavoriteJokeTimer={handleFavoriteJokeTimer}
+            />
+
             <JokesList
                 jokes={jokes}
                 favoriteJokes={favoriteJokes}
