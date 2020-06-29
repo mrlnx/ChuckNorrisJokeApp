@@ -4,10 +4,12 @@ import Header from "./components/Header/Header";
 import JokesList from "./components/JokesList/JokesList";
 import FavoritesList from "./components/FavoritesList/FavoritesList";
 
-import {favoritesStore} from "./utils/constants";
+import {favoritesStore, intervalMilliseconds} from "./utils/constants";
 import {storeItem, getStoredItem} from "./utils/store";
 
 import {IJoke} from "./shared/types";
+
+import axios from "axios";
 
 const App: React.RC = () => {
     const initialFavoriteJokes = JSON.parse(getStoredItem(favoritesStore)) || [];
@@ -54,19 +56,24 @@ const App: React.RC = () => {
             clearInterval(timer);
             setTimer(null);
         } else {
-            const jokeInterval = setInterval(setFetchFavoriteJoke, 5000, true);
+            const jokeInterval = setInterval(setFetchFavoriteJoke, intervalMilliseconds, true);
             setTimer(jokeInterval);
         }
     };
 
     useEffect(() => {
-        if (fetchJokes) {
-            fetch("http://api.icndb.com/jokes/random/10.", {})
-                .then((res) => res.json())
-                .then((data) => setJokes(data.value))
-                .catch((err) => console.error(err));
-            setFetchJokes(false);
-        }
+        const fetchAllJokes = async () => {
+            try {
+                const response = await axios.get("http://api.icndb.com/jokes/random/10");
+                const {value} = response.data;
+                setJokes(value);
+                setFetchJokes(false);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        if (fetchJokes) fetchAllJokes();
     }, [fetchJokes]);
 
     useEffect(() => {
@@ -74,14 +81,24 @@ const App: React.RC = () => {
     }, [favoriteJokes]);
 
     useEffect(() => {
-        if (fetchFavoriteJoke) {
-            console.log("fetch");
-            fetch("http://api.icndb.com/jokes/random/1.", {})
-                .then((res) => res.json())
-                .then((data) => setFavoriteJokes([...favoriteJokes, data.value[0]]))
-                .catch((err) => console.error(err));
-            setFetchFavoriteJoke(false);
-        }
+        const fetchRandomJoke = async () => {
+            try {
+                const response = await axios.get("http://api.icndb.com/jokes/random/1");
+                const {value} = response.data;
+                const filteredItems = favoriteJokes.filter((filter) => filter.id === value[0].id);
+
+                if (filteredItems.length > 0) {
+                    fetchRandomJoke();
+                } else {
+                    setFavoriteJokes([...favoriteJokes, value[0]]);
+                }
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        if (fetchFavoriteJoke && favoriteJokes.length <= 9) fetchRandomJoke();
+        setFetchFavoriteJoke(false);
     }, [favoriteJokes, fetchFavoriteJoke]);
 
     return (
