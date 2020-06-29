@@ -1,6 +1,14 @@
 import React, {useState, useEffect} from 'react';
 
+
+import JokesList from './components/JokesList/JokesList';
+
 interface IJokes {
+    id: number;
+    joke: string;
+}
+
+interface IFavorites {
     id: number;
     joke: string;
 }
@@ -16,10 +24,22 @@ const App: React.RC = () => {
 
     /**
      * Fetch Jokes Button
-     * When these jokes are fetched via a button they need to be displayed in a list. In this list we can mark certain jokes as favorite.
+     * When these jokes are fetched via a button they need to be displayed in a list.
      */
 
     const handleFetchJokes = () => setFetchJokes(true);
+
+    /**
+     * Set Favorite Joke
+     * In this list we can mark certain jokes as favorite.
+     */
+
+    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>([]);
+
+    const handleFavoriteJoke = (joke) => {
+        console.log("handleFavoriteJoke");
+        setFavoriteJokes([...favoriteJokes, joke]);
+    };
 
     /**
      * Get Jokes Effect
@@ -36,20 +56,22 @@ const App: React.RC = () => {
         }
     }, [fetchJokes]);
 
+    /**
+     * Get Favorite Joke Effect
+     */
+
+    useEffect(() => {
+        console.log("favoriteJokes effect");
+        console.log(favoriteJokes);
+    }, [favoriteJokes]);
+
     return (
         <>
             <>
                 <h1>Chuck Norris Jokes App</h1>
                 <button onClick={() => handleFetchJokes()}>Fetch Jokes</button>
             </>
-            <>
-                <h2>Jokes</h2>
-                <ul>
-                    {jokes.map((item) => (
-                        <li key={item.id}>{item.joke}</li>
-                    ))}
-                </ul>
-            </>
+            <JokesList jokes={jokes} handleFavorite={handleFavoriteJoke} />
         </>
     );
 };
