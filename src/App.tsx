@@ -18,7 +18,7 @@ const App: React.RC = () => {
      */
 
     useEffect(() => {
-        console.log("jokes fetched");
+        console.log("fetch jokes");
 
         fetch("http://api.icndb.com/jokes/random/10.", {})
             .then((res) => res.json())
