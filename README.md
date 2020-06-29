@@ -32,5 +32,5 @@ favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
 - Add Jokes to favorites ✅
 - Favorites list with a max of 10 items/jokes ✅
 - Remove joke from favorite list ✅
-- On refresh the list of favorites need to be stored
-- Create timer function which adds a joke to the favorite list every 5s
+- On refresh the list of favorites need to be stored ✅
+- Create timer function which adds a joke to the favorite list every 5s ✅
