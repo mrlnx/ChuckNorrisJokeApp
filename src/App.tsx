@@ -3,6 +3,9 @@ import React, {useState, useEffect} from 'react';
 import JokesList from './components/JokesList/JokesList';
 import FavoritesList from './components/FavoritesList/FavoritesList';
 
+import {favoritesStore} from './utils/constants'
+import {storeItem, getStoredItem} from './utils/store'
+
 interface IJokes {
     id: number;
     joke: string;
@@ -14,44 +17,35 @@ interface IFavorites {
 }
 
 const App: React.RC = () => {
-    /**
-     * Get Jokes
-     * We want an Application where we can fetch 10 Random Chuck Norris jokes. These jokes can be fetched from the following API http://api.icndb.com/jokes/random/10.
-     */
+    const initialFavoriteJokes = JSON.parse(getStoredItem(favoritesStore)) || [];
 
     const [fetchJokes, setFetchJokes] = useState<{jokesFetched: boolean}>(false);
     const [jokes, setJokes] = useState<IJokes>([]);
+    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>(initialFavoriteJokes);
+    const [fetchFavoriteJoke, setFetchFavoriteJoke] = useState<{favoriteJokeFetched: boolean}>(
+        false
+    );
+    const [timer, setTimer] = useState<{timerId: number}>(null);
+
 
     /**
-     * Fetch Jokes Button
-     * When these jokes are fetched via a button they need to be displayed in a list.
+     * Handles the event of fetching the jokes list
      */
 
     const handleFetchJokes = () => setFetchJokes(true);
 
     /**
-     * Initial stored jokes
-     * On refresh the favorites lists should be stored so next time when i visit the app my favorites should be
-present.
+     * Handles adding event of the favorite joke
+     * @param joke 
      */
-
-    const initialFavoriteJokes =
-        JSON.parse(window.localStorage.getItem("chuck-norris-app:favorite-jokes")) || [];
-
-    /**
-     * Add Favorite Joke
-     * In this list we can mark certain jokes as favorite.
-     */
-
-    const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>(initialFavoriteJokes);
 
     const handleAddFavoriteJoke = (joke) => {
         if (favoriteJokes.length <= 9) setFavoriteJokes([...favoriteJokes, joke]);
     };
 
     /**
-     * Remove Favorite Joke
-     * There should be an option to remove jokes from the favourite list as well.
+     * Handles the removing event of an Favorite joke
+     * @param joke
      */
 
     const handleRemoveFavoriteJoke = (joke) => {
@@ -60,16 +54,8 @@ present.
     };
 
     /**
-     * Timer to add random favorite Joke
-     * We can also turn a timer on/off via a button (every 5 seconds). This will add one random joke to the
-favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
-
+     * Handles the event of adding an favorite joke
      */
-
-    const [fetchFavoriteJoke, setFetchFavoriteJoke] = useState<{favoriteJokeFetched: boolean}>(
-        false
-    );
-    const [timer, setTimer] = useState<{timerId: number}>(null);
 
     const handleFavoriteJokeTimer = () => {
         if(timer !== null) {
@@ -79,11 +65,7 @@ favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
             const jokeInterval = setInterval(setFetchFavoriteJoke, 5000, true);
             setTimer(jokeInterval);
         }
-    }
-
-    /**
-     * Get Jokes Effect
-     */
+    };
 
     useEffect(() => {
         if (fetchJokes) {
@@ -95,21 +77,9 @@ favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
         }
     }, [fetchJokes]);
 
-    /**
-     * Get Favorite Joke Effect
-     */
-
     useEffect(() => {
-        // storing is a side effect => storage.setItem(keyName, keyValue);
-        window.localStorage.setItem(
-            "chuck-norris-app:favorite-jokes",
-            JSON.stringify(favoriteJokes)
-        );
+        storeItem(favoritesStore, JSON.stringify(favoriteJokes));
     }, [favoriteJokes]);
-
-    /**
-     * Get Random Joke Effect
-     */
 
     useEffect(() => {
         if (fetchFavoriteJoke) {
