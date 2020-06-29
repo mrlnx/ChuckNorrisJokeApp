@@ -31,15 +31,24 @@ const App: React.RC = () => {
     const handleFetchJokes = () => setFetchJokes(true);
 
     /**
-     * Set Favorite Joke
+     * Add Favorite Joke
      * In this list we can mark certain jokes as favorite.
      */
 
     const [favoriteJokes, setFavoriteJokes] = useState<IFavorites>([]);
 
-    const handleFavoriteJoke = (joke) => {
-        console.log("handleFavoriteJoke");
+    const handleAddFavoriteJoke = (joke) => {
         if (favoriteJokes.length <= 9) setFavoriteJokes([...favoriteJokes, joke]);
+    };
+
+    /**
+     * Remove Favorite Joke
+     * There should be an option to remove jokes from the favourite list as well.
+     */
+
+    const handleRemoveFavoriteJoke = (joke) => {
+        const filteredJokes = favoriteJokes.filter((filteredJoke) => filteredJoke.id !== joke.id);
+        setFavoriteJokes(filteredJokes);
     };
 
     /**
@@ -48,7 +57,6 @@ const App: React.RC = () => {
 
     useEffect(() => {
         if (fetchJokes) {
-            console.log("fetch jokes");
             fetch("http://api.icndb.com/jokes/random/10.", {})
                 .then((res) => res.json())
                 .then((data) => setJokes(data.value))
@@ -62,8 +70,8 @@ const App: React.RC = () => {
      */
 
     useEffect(() => {
-        console.log("favoriteJokes effect");
-        console.log(favoriteJokes);
+        //console.log("favoriteJokes effect");
+        //console.log(favoriteJokes);
     }, [favoriteJokes]);
 
     return (
@@ -75,9 +83,9 @@ const App: React.RC = () => {
             <JokesList
                 jokes={jokes}
                 favoriteJokes={favoriteJokes}
-                handleFavorite={handleFavoriteJoke}
+                handleAddJoke={handleAddFavoriteJoke}
             />
-            <FavoritesList favorites={favoriteJokes} />
+            <FavoritesList favorites={favoriteJokes} handleRemoveJoke={handleRemoveFavoriteJoke} />
         </>
     );
 };

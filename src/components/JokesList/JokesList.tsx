@@ -14,10 +14,10 @@ interface IFavorites {
 interface IJokesListProps {
     jokes: Array<IJokes>;
     favoriteJokes: Array<IFavorites>;
-    handleFavorite: () => void;
+    handleAddJoke: () => void;
 }
 
-const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleFavorite}) => {
+const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleAddJoke}) => {
     return (
         <>
             <h2>Jokes</h2>
@@ -26,7 +26,7 @@ const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleFavor
                     const filteredItems = favoriteJokes.filter((filter) => filter.id === item.id);
                     item.showFavoriteButton = filteredItems.length === 0 ? true : false;
 
-                    return <Joke key={item.joke} item={item} handleFavorite={handleFavorite} />;
+                    return <Joke key={item.joke} item={item} handleAddJoke={handleAddJoke} />;
                 })}
             </ul>
         </>

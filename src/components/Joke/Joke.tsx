@@ -7,15 +7,15 @@ interface IJokes {
 
 interface IJokeProps {
     item: IJokes;
-    handleFavorite: () => void;
+    handleAddJoke: () => void;
 }
 
-const Joke: React.FC<IJokeProps> = ({item, handleFavorite}) => {
+const Joke: React.FC<IJokeProps> = ({item, handleAddJoke}) => {
     return (
         <li>
             {item.joke}
             {item.showFavoriteButton === true ? (
-                <button onClick={() => handleFavorite(item)}>Favourite</button>
+                <button onClick={() => handleAddJoke(item)}>Favourite</button>
             ) : (
                 ""
             )}

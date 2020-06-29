@@ -7,10 +7,16 @@ interface IFavorites {
 
 interface IFavoriteProps {
     item: IFavorites;
+    handleRemoveJoke: () => void;
 }
 
-const Favorite: React.FC<IFavoriteProps> = ({item}) => {
-    return <li>{item.joke}</li>;
+const Favorite: React.FC<IFavoriteProps> = ({item, handleRemoveJoke}) => {
+    return (
+        <li>
+            {item.joke}
+            <button onClick={() => handleRemoveJoke(item)}>Delete</button>
+        </li>
+    );
 };
 
 export default Favorite;
