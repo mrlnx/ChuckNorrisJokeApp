@@ -26,7 +26,7 @@ favourites list http://api.icndb.com/jokes/random/1 until the list has 10 items.
 
 ## TODO
 
-- Setup
+- Setup ✅
 - Fetch Jokes
 - Create Button to fetch jokes
 - Add Jokes to favorites
