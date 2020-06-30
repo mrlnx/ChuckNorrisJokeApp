@@ -8,9 +8,13 @@ const FavoriteList: React.FC<IFavoriteListProps> = ({favorites, handleRemoveJoke
         <div className="jokes-list">
             <h2>Favorite Jokes</h2>
             <ul>
-                {favorites.map((item) => (
-                    <Favorite key={item.id} item={item} handleRemoveJoke={handleRemoveJoke} />
-                ))}
+                {favorites.length > 0 ? (
+                    favorites.map((item) => (
+                        <Favorite key={item.id} item={item} handleRemoveJoke={handleRemoveJoke} />
+                    ))
+                ) : (
+                    <li>Add some jokes to favorites please</li>
+                )}
             </ul>
         </div>
     );

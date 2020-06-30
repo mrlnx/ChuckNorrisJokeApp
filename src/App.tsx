@@ -66,10 +66,16 @@ const App: React.RC = () => {
         }
     };
 
-    const handleTabSwitch = (tab: string) => {
-        console.log(tab);
-        setTabs(tab);
-    };
+    /**
+     * Handles the event of switching tabs
+     * @param tab
+     */
+
+    const handleTabSwitch = (tab: string) => setTabs(tab);
+
+    /**
+     * Functions for the side effects
+     */
 
     useEffect(() => {
         const fetchAllJokes = async () => {
