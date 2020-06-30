@@ -3,6 +3,8 @@ import {IFavoriteProps} from "./types";
 
 import sprite from "./../../assets/sprite.svg";
 
+import "./Favorite.css";
+
 const Favorite: React.FC<IFavoriteProps> = ({item, handleRemoveJoke}) => {
     return (
         <li>

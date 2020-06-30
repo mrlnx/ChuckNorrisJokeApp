@@ -1,0 +1,139 @@
+
+/**
+    Footer
+*/
+
+
+.footer {
+    display: flex;
+    order: 1;
+    justify-content: space-between;
+    max-width: 100rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100rem;
+        order: 0;
+    }
+}
+
+/**
+
+    Tabs
+*/
+
+.tab {
+    text-align: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    list-style: none;
+    display: inline-block;
+    margin-right: .5rem;
+}
+
+.tab a {
+    color: #fff;
+    background-color: #777;
+
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-radius: 0px 0px 3px 3px;
+    cursor: pointer;
+}
+
+.tab a:hover {
+    color: #333;
+    background-color: #faf9f9;
+}
+
+.tab .active {
+    color: #333;
+    background-color: #faf9f9;
+
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-radius: 0px 0px 3px 3px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .tab a {
+        border-radius: 3px 3px 0px 0px;
+    }
+
+    .tab .active {
+        border-radius: 3px 3px 0px 0px;
+    }
+}
+
+/**
+    Buttons
+*/
+
+.button {
+    text-align: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin-left: .5rem;
+}
+
+.button a {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-radius: 0px 0px 3px 3px;
+    cursor: pointer;
+}
+
+.button a:hover {
+    background-color: #777;
+}
+
+.button input {
+    position: absolute;
+    opacity: 0;
+}
+
+.button label {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    border-radius: 0px 0px 3px 3px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .button a {
+        border-radius: 3px 3px 0px 0px;
+    }
+
+    .button label {
+        border-radius: 3px 3px 0px 0px;
+    }
+}
+
+.button label:hover {
+    background-color: #777;
+}
+
+.button span {
+    display: block;
+    padding: 1.2rem;
+    cursor: pointer;
+}
+
+.button input:checked + span {
+    background-color: #00C853;
+}

@@ -3,6 +3,8 @@ import {IJokeProps} from "./types";
 
 import sprite from "./../../assets/sprite.svg";
 
+import "./Joke.css";
+
 const Joke: React.FC<IJokeProps> = ({item, handleAddJoke}) => {
     return (
         <li>

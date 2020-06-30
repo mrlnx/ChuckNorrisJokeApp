@@ -3,6 +3,8 @@ import Favorite from "./../Favorite/Favorite";
 
 import {IFavoriteListProps} from "./types";
 
+import "./FavoritesList.css";
+
 const FavoriteList: React.FC<IFavoriteListProps> = ({favorites, handleRemoveJoke}) => {
     return (
         <div className="jokes-list">

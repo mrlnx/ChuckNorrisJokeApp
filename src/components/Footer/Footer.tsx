@@ -1,6 +1,8 @@
 import React from "react";
 import {IFooter} from "./types.ts";
 
+import "./Footer.css";
+
 const Footer: React.FC<IFooter> = ({
     tabs,
     favoriteJokes,
@@ -13,7 +15,6 @@ const Footer: React.FC<IFooter> = ({
             <ul className="tabs">
                 <li className="tab">
                     <a
-                        href="#"
                         className={tabs === "jokes" ? "active" : ""}
                         onClick={() => handleTabSwitch("jokes")}
                     >
@@ -22,7 +23,6 @@ const Footer: React.FC<IFooter> = ({
                 </li>
                 <li className="tab">
                     <a
-                        href="#"
                         className={tabs === "favorites" ? "active" : ""}
                         onClick={() => handleTabSwitch("favorites")}
                     >
@@ -33,9 +33,7 @@ const Footer: React.FC<IFooter> = ({
 
             <ul className="buttons">
                 <li className="button">
-                    <a href="#" onClick={() => handleFetchJokes()}>
-                        Fetch Jokes
-                    </a>
+                    <a onClick={() => handleFetchJokes()}>Fetch Jokes</a>
                 </li>
                 <li className="button">
                     <label>

@@ -1,0 +1,18 @@
+/**
+    JOKES LIST
+*/
+
+h2 {
+    margin-top: 1.5rem;
+    margin-left: .8rem;
+}
+
+.star {
+    width: 1.75rem;
+    height: 1.75rem;
+    fill: #eb2f64;
+}
+
+.jokes-list {
+    min-height: 60rem;
+}

@@ -3,6 +3,8 @@ import Joke from "./../Joke/Joke";
 
 import {IJokesListProps} from "./types";
 
+import "./JokesList.css";
+
 const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleAddJoke}) => {
     return (
         <div className="jokes-list">
