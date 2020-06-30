@@ -8,7 +8,7 @@ import "./FavoritesList.css";
 const FavoriteList: React.FC<IFavoriteListProps> = ({favorites, handleRemoveJoke}) => {
     return (
         <div className="jokes-list">
-            <h2>Favorite Jokes</h2>
+            <h2>Favorite jokes</h2>
             <ul>
                 {favorites.length > 0 ? (
                     favorites.map((item) => (
