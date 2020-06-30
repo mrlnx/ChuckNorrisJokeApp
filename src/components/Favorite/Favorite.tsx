@@ -1,12 +1,17 @@
 import React from "react";
-
 import {IFavoriteProps} from "./types";
+
+import sprite from "./../../assets/sprite.svg";
 
 const Favorite: React.FC<IFavoriteProps> = ({item, handleRemoveJoke}) => {
     return (
         <li>
             {item.joke}
-            <button onClick={() => handleRemoveJoke(item)}>Delete</button>
+            <button onClick={() => handleRemoveJoke(item)}>
+                <svg className="star">
+                    <use href={sprite + "#icon-star-outlined"} />
+                </svg>
+            </button>
         </li>
     );
 };
