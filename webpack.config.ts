@@ -28,6 +28,13 @@ const webpackConfig = (env): Configuration => ({
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {}
+                }]
+            },
         ]
     },
     plugins: [
@@ -43,3 +50,4 @@ const webpackConfig = (env): Configuration => ({
 });
 
 export default webpackConfig;
+

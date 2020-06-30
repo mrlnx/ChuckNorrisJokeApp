@@ -102,19 +102,24 @@ const App: React.RC = () => {
     }, [favoriteJokes, fetchFavoriteJoke]);
 
     return (
-        <>
-            <Header
-                handleFetchJokes={handleFetchJokes}
-                handleFavoriteJokeTimer={handleFavoriteJokeTimer}
-            />
+        <div class="container">
+            <div class="content">
+                <Header
+                    handleFetchJokes={handleFetchJokes}
+                    handleFavoriteJokeTimer={handleFavoriteJokeTimer}
+                />
 
-            <JokesList
-                jokes={jokes}
-                favoriteJokes={favoriteJokes}
-                handleAddJoke={handleAddFavoriteJoke}
-            />
-            <FavoritesList favorites={favoriteJokes} handleRemoveJoke={handleRemoveFavoriteJoke} />
-        </>
+                <JokesList
+                    jokes={jokes}
+                    favoriteJokes={favoriteJokes}
+                    handleAddJoke={handleAddFavoriteJoke}
+                />
+                <FavoritesList
+                    favorites={favoriteJokes}
+                    handleRemoveJoke={handleRemoveFavoriteJoke}
+                />
+            </div>
+        </div>
     );
 };
 
