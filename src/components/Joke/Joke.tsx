@@ -5,7 +5,7 @@ import {IJokeProps} from "./types";
 const Joke: React.FC<IJokeProps> = ({item, handleAddJoke}) => {
     return (
         <li>
-            {item.joke}
+            <span>{item.joke}</span>
             {item.showFavoriteButton === true ? (
                 <button onClick={() => handleAddJoke(item)}>Favourite</button>
             ) : (

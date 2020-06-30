@@ -5,7 +5,7 @@ import {IJokesListProps} from "./types";
 
 const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleAddJoke}) => {
     return (
-        <>
+        <div className="jokes-list">
             <h2>Jokes</h2>
             <ul>
                 {jokes.map((item) => {
@@ -15,7 +15,7 @@ const JokesList: React.FC<IJokesListProps> = ({jokes, favoriteJokes, handleAddJo
                     return <Joke key={item.joke} item={item} handleAddJoke={handleAddJoke} />;
                 })}
             </ul>
-        </>
+        </div>
     );
 };
 

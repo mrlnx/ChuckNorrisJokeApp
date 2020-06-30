@@ -27,6 +27,13 @@ body {
     border-top-right-radius: 3px;
 }
 
+
+/**
+
+ HEADER
+
+*/
+
 .header {
     display: flex;
     width: 100%;
@@ -40,4 +47,40 @@ body {
 .logo {
     height: 5.5rem;
     margin-left: 0.5rem;
+}
+
+/**
+
+    JOKES LIST
+
+*/
+
+h2 {
+    margin-top: 1.5rem;
+    margin-left: .8rem;
+}
+
+.jokes-list ul li {
+    background-color: #ffffff;
+    list-style: none;
+    padding: 1.1rem;
+    margin: 1rem 0;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #f4f2f2;
+    border-right: 1px solid #f4f2f2;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.jokes-list ul li span {
+    margin-right: 5rem;
+}
+
+.jokes-list ul li button {
+    background-color: transparent;
+    border: none;
+    float: right;
+    outline: none;
+    cursor: pointer;
 }
