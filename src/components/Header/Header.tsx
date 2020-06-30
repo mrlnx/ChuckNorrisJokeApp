@@ -7,13 +7,13 @@ import Logo from './../../assets/logo.png';
 
 const Header: React.FC<IHeader> = ({handleFetchJokes, handleFavoriteJokeTimer}) => {
     return (
-        <>
-            <img src={Logo} />
+        <header className="header">
+            <img src={Logo} className="logo"/>
             <h1>Chuck Norris Jokes App</h1>
             <button onClick={() => handleFetchJokes()}>Fetch Jokes</button>
 
             <ToggleButton handleFavoriteJokeTimer={handleFavoriteJokeTimer} />
-        </>
+        </header>
     );
 };
 
