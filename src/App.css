@@ -16,17 +16,51 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
     max-width: 100rem;
-    margin: 8rem auto 0rem auto;
+    margin: 5rem auto 0rem auto;
+}
+
+@media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        max-width: 100rem;
+        margin: 0rem auto 0rem auto;
+    }
 }
 
 .content {
     background-color: #faf9f9;
     padding: 1rem;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-radius: 3px 3px 0px 0px;
+    order: 0;
 }
 
+.footer {
+    display: flex;
+    order: 1;
+    justify-content: space-between;
+    max-width: 100rem;
+}
+
+
+@media only screen and (max-width: 768px) {
+    
+    .content {
+        background-color: #faf9f9;
+        padding: 1rem;
+        border-radius: 0px 0px 3px 3px;
+        order: 1;
+    }
+
+    .footer {
+        display: flex;
+        justify-content: space-between;
+        max-width: 100rem;
+        order: 0;
+    }
+}
 
 /**
 
@@ -103,14 +137,6 @@ h2 {
 */
 
 
-.footer {
-    display: flex;
-    justify-content: space-between;
-    max-width: 100rem;
-    margin: 0rem auto 0rem auto;
-    
-}
-
 /**
 
     Tabs
@@ -133,10 +159,7 @@ h2 {
     text-decoration: none;
     padding: 1.2rem;
     display: block;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
-}
-
+    border-radius: 0px 0px 3px 3px;}
 
 .tab a:hover {
     color: #333;
@@ -150,10 +173,19 @@ h2 {
     text-decoration: none;
     padding: 1.2rem;
     display: block;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
 }
 
+@media only screen and (max-width: 768px) {
+
+    .tab a {
+        border-radius: 3px 3px 0px 0px;
+    }
+
+    .tab .active {
+        border-radius: 3px 3px 0px 0px;
+    }
+}
 
 /**
     Buttons
@@ -175,8 +207,7 @@ h2 {
     text-decoration: none;
     padding: 1.2rem;
     display: block;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
 }
 
 .button a:hover {
@@ -193,8 +224,18 @@ h2 {
     color: #fff;
     text-decoration: none;
     display: block;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0px 0px 3px 3px;
+}
+
+@media only screen and (max-width: 768px) {
+
+    .button a {
+        border-radius: 3px 3px 0px 0px;
+    }
+
+    .button label {
+        border-radius: 3px 3px 0px 0px;
+    }
 }
 
 .button label:hover {

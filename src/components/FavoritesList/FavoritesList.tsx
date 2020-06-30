@@ -13,7 +13,7 @@ const FavoriteList: React.FC<IFavoriteListProps> = ({favorites, handleRemoveJoke
                         <Favorite key={item.id} item={item} handleRemoveJoke={handleRemoveJoke} />
                     ))
                 ) : (
-                    <li>Add some jokes to favorites please</li>
+                    <li>Add some jokes to favorites please!</li>
                 )}
             </ul>
         </div>
