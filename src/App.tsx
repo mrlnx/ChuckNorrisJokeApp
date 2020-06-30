@@ -12,6 +12,7 @@ import {IJoke} from "./shared/types";
 import axios from "axios";
 
 import "./App.css";
+import Footer from "components/Footer/Footer";
 
 const App: React.RC = () => {
     const initialFavoriteJokes = JSON.parse(getStoredItem(favoritesStore)) || [];
@@ -23,6 +24,8 @@ const App: React.RC = () => {
         false
     );
     const [timer, setTimer] = useState<{timerId: number}>(null);
+
+    const [tabs, setTabs] = useState<{tab: string}>("jokes");
 
     /**
      * Handles the event of fetching the jokes list
@@ -61,6 +64,11 @@ const App: React.RC = () => {
             const jokeInterval = setInterval(setFetchFavoriteJoke, intervalMilliseconds, true);
             setTimer(jokeInterval);
         }
+    };
+
+    const handleTabSwitch = (tab: string) => {
+        console.log(tab);
+        setTabs(tab);
     };
 
     useEffect(() => {
@@ -111,16 +119,27 @@ const App: React.RC = () => {
                     handleFavoriteJokeTimer={handleFavoriteJokeTimer}
                 />
 
-                <JokesList
-                    jokes={jokes}
-                    favoriteJokes={favoriteJokes}
-                    handleAddJoke={handleAddFavoriteJoke}
-                />
-                <FavoritesList
-                    favorites={favoriteJokes}
-                    handleRemoveJoke={handleRemoveFavoriteJoke}
-                />
+                {tabs === "jokes" ? (
+                    <JokesList
+                        jokes={jokes}
+                        favoriteJokes={favoriteJokes}
+                        handleAddJoke={handleAddFavoriteJoke}
+                    />
+                ) : (
+                    <FavoritesList
+                        favorites={favoriteJokes}
+                        handleRemoveJoke={handleRemoveFavoriteJoke}
+                    />
+                )}
             </div>
+
+            <Footer
+                favoriteJokes={favoriteJokes}
+                tabs={tabs}
+                handleTabSwitch={handleTabSwitch}
+                handleFetchJokes={handleFetchJokes}
+                handleFavoriteJokeTimer={handleFavoriteJokeTimer}
+            />
         </div>
     );
 };

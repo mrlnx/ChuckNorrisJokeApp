@@ -42,6 +42,8 @@ body {
     justify-content: flex-start;
     align-items: center;
     text-transform: uppercase;
+    border-bottom: 1px solid #f4f2f2;
+    border-right: 1px solid #f4f2f2;
 }
 
 .logo {
@@ -58,6 +60,10 @@ body {
 h2 {
     margin-top: 1.5rem;
     margin-left: .8rem;
+}
+
+.jokes-list {
+    min-height: 60rem;
 }
 
 .jokes-list ul li {
@@ -83,4 +89,118 @@ h2 {
     float: right;
     outline: none;
     cursor: pointer;
+}
+
+
+/**
+    Footer
+*/
+
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100rem;
+    margin: 0rem auto 0rem auto;
+    
+}
+
+/**
+
+    Tabs
+*/
+
+.tab {
+    
+    text-align: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    list-style: none;
+    display: inline-block;
+    margin-right: .5rem;
+}
+
+.tab a {
+    color: #fff;
+    background-color: #777;
+
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+.tab a:hover {
+    color: #333;
+    background-color: #faf9f9;
+}
+
+.tab .active {
+    color: #333;
+    background-color: #faf9f9;
+
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+
+/**
+    Buttons
+*/
+
+.button {
+    text-align: center;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    list-style: none;
+    display: inline-block;
+    position: relative;
+    margin-left: .5rem;
+}
+
+.button a {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    padding: 1.2rem;
+    display: block;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.button a:hover {
+    background-color: #777;
+}
+
+.button input {
+    position: absolute;
+    opacity: 0;
+}
+
+.button label {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.button label:hover {
+    background-color: #777;
+}
+
+.button span {
+    display: block;
+    padding: 1.2rem;
+    cursor: pointer;
+}
+
+.button input:checked + span {
+    background-color: #00C853;
 }
