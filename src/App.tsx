@@ -11,6 +11,8 @@ import {IJoke} from "./shared/types";
 
 import axios from "axios";
 
+import "./App.css";
+
 const App: React.RC = () => {
     const initialFavoriteJokes = JSON.parse(getStoredItem(favoritesStore)) || [];
 
@@ -102,8 +104,8 @@ const App: React.RC = () => {
     }, [favoriteJokes, fetchFavoriteJoke]);
 
     return (
-        <div class="container">
-            <div class="content">
+        <div className="container">
+            <div className="content">
                 <Header
                     handleFetchJokes={handleFetchJokes}
                     handleFavoriteJokeTimer={handleFavoriteJokeTimer}
